@@ -18,7 +18,7 @@ log/*.log
 .idea
 .DS_Store
 
-config/database.yml
+#config/database.yml
 db/schema.rb
 doc/api
 doc/app
