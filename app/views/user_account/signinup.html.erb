@@ -1,0 +1,43 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'signinup' %>
+<% end %>
+
+<div class="mt-signinup-wrapper">
+
+    <div class="signinup-header">
+
+    </div>
+
+    <div class="signinup-content">
+        <div class="signinup-title">
+            <p><strong>欢迎使用 MeetThere</strong></p>
+            <p><strong>遇见未知，在这里开启一段全新的故事<strong><p>
+        </div>
+
+        <div class="signinup-box">
+            <div class="signin-box">
+                <div>
+                    <input type="email" class="form-control" id="signin-email" placeholder="Email">
+                </div>
+
+                <div>
+                    <input type="password" class="form-control" id="signin-password" placeholder="Password" />
+                    <button type="button" class="btn btn-primary" id="signin-btn">登录</button>
+                </div>
+
+                <div class="remember-group">
+                    <input type="checkbox" id="remember-me"><span> 记住我 &middot </span><span><%= link_to "忘记密码?",'#' %></span>
+                </div>
+            </div>
+
+            <div class="signup-box">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="signinup-footer">
+        <span>©</span> <span>2016 Treasland</span>
+    </div>
+</div>
+

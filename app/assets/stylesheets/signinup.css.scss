@@ -1,0 +1,140 @@
+$bgColor:#f5f8fa;
+$mt-grey:#e4e4e4;
+$mt-blue:#0099ff;
+
+body{
+    background-image:url(sign_bg.jpg);
+    background-attachment:fixed
+}
+
+.mt-signinup-wrapper{
+    display:-webkit-flex;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    width:100%;
+
+    //border:2px solid black;
+}
+
+// 页脚
+.signinup-footer{
+    //border:1px solid blue;
+    margin-top:100px;
+    height:30px;
+    text-align:center;
+    color:white;
+    font-size:12px;
+    margin-bottom:200px;
+}
+
+
+// 整个登录页面容器
+.signinup-content{
+    //border:1px solid red;
+    display:-webkit-flex;
+    display:flex;
+    height:550px;
+    min-height:550px;
+
+    min-width:700px;
+    justify-content:center;
+
+}
+
+
+
+
+// 欢迎使用 MeetThere那部分文字
+.signinup-title{
+    min-width:500px;
+    //border:1px solid red;
+    padding-top:150px;
+    color:white;
+    p:nth-child(1){
+        font-size:40px;
+    }
+
+    p:nth-child(2){
+        font-size:20px;
+        margin-top:40px;
+    }
+}
+
+// 右边 登录注册部分
+.signinup-box{
+    width:300px;
+    //border:1px solid red;
+    padding-top:130px;
+}
+
+
+// 登录框容器
+.signin-box{
+    width:300px;
+    height:125px;
+    border:1px solid $mt-grey;
+    border-radius:5px;
+    background-color:white;
+    div{
+       // border:1px solid red;
+    }
+}
+
+// 注册框容器
+.signup-box{
+    width:300px;
+    height:257px;
+    border:1px solid $mt-grey;
+    margin-top:10px;
+    border-radius:5px;
+    background-color:white;
+    
+}
+
+
+// 登录邮箱输入框 
+#signin-email{
+    width:275px;
+    height:30px;
+    margin-left:11px;
+    margin-right:11px;
+    margin-top:12px;
+}
+
+// 登录密码输入框
+#signin-password{
+    width:205px;
+    height:30px;
+    margin-left:11px;
+    margin-right:5px;
+    margin-top:5px;
+    margin-bottom:0px;
+}
+
+// 登录按钮
+#signin-btn{
+    margin-bottom:-5px;
+    width:60px;
+}
+
+
+// 例如框 ，记住我， 忘记密码
+.remember-group{
+    margin-top:5px;
+    font-size:10px;
+        
+    // 忘记密码
+    a:link,
+    a:visited,
+    a:hover,
+    a:active{
+        color:$mt-blue;
+    }
+}
+
+// 记住我单选框偏移
+#remember-me{
+    margin-left:11px;
+    margin-bottom:8px;
+}

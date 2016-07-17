@@ -11,4 +11,8 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 #Rails.application.config.assets.precompile += %w( global.css )
+Rails.application.config.assets.precompile += %w( meetthere.css )
 Rails.application.config.assets.precompile += %w( homepage.css )
+Rails.application.config.assets.precompile += %w( signinup.css )
+Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.min.css )
+Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.min.js )
