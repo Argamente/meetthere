@@ -116,6 +116,11 @@ body{
 #signin-btn{
     margin-bottom:-5px;
     width:60px;
+    background:#1C9CEC;
+}
+
+#signin-btn:hover{
+    background:#1290DE;
 }
 
 
@@ -137,4 +142,65 @@ body{
 #remember-me{
     margin-left:11px;
     margin-bottom:8px;
+}
+
+
+
+//--------接下来是是注册框
+
+.signup-box{
+    display:-webkit-flex;
+    display:flex;
+    flex-direction:column;
+}
+
+.row-1{
+    //border:1px solid red;
+    height:40px;
+    font-size:16px;
+    line-height:40px;
+    padding-left:11px;
+    border-bottom:1px solid $mt-grey;
+    margin-bottom:5px;
+    span:nth-child(2){
+        color:#949494;
+    }
+}
+
+#signup-nickname,
+#signup-email,
+#signup-password{
+    width:275px;
+    height:30px;
+    margin-left:11px;
+    margin-right:11px;
+    margin-top:10px;
+    margin-bottom:0;
+}
+
+.row-3{
+    margin-top:10px;
+    margin-left:11px;
+    span{
+        margin-right:50px;
+    }
+
+    img{
+        margin-left:10px;
+    }
+}
+
+.row-6{
+    margin-top:15px;
+    margin-right:11px;
+    text-align:right;
+}
+
+#signup-btn{
+    //color:black;
+    background:#1C9CEC;
+}
+
+#signup-btn:hover{
+    background:#1290DE;
 }
