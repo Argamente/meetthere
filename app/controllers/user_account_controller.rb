@@ -22,7 +22,15 @@ class UserAccountController < ApplicationController
 
     # 注册认证
     def tosignup
-    
+
+
+
+
+        message = "Hey bro, 登录后才能记录近况的，你是怎么做到不登录就发表近况的？"
+        render :json=>{
+                   :result=>-1,
+                   :message=>message,
+               }
     end
 
 end
