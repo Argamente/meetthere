@@ -17,6 +17,8 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 gem 'will_paginate', '~> 3.1'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'sqlite3' if Gem.win_platform?
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
