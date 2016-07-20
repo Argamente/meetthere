@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nickname: MyString
+  birthday_year: 1
+  birthday_month: 1
+  birthday_day: 1
+  location: MyString
+  mood: MyString
+  head_url: MyString
+  account_id: 1
+
+two:
+  nickname: MyString
+  birthday_year: 1
+  birthday_month: 1
+  birthday_day: 1
+  location: MyString
+  mood: MyString
+  head_url: MyString
+  account_id: 1

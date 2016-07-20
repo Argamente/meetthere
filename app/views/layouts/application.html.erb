@@ -5,10 +5,25 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'bootstrap/bootstrap.min' %>
+    <%= stylesheet_link_tag 'meetthere' %>
+    
+    <%= yield :head %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'bootstrap/bootstrap.min' %>
+
   </head>
 
   <body>
     <%= yield %>
+
+
+    <% flash.each do |key,value| %>
+      <div><%= value %></div>
+    <% end %>
+
+    <% debug(params) if Rails.env.development? %>
+
   </body>
 </html>
