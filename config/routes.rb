@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   match '/signin', to:'user_account#signinup', via:'get'
   match '/signup', to:'user_account#signinup', via:'get'
+  match '/tosignin', to:'user_account#tosignin',via:'post'
+  match '/tosignup', to:'user_account#tosignup', via:'post'
 end

@@ -7,9 +7,9 @@ module UuidHelper
     if uuid_data.nil?
       uuid_data = Uuid.new
       uuid_data.account_id = default_uuid
-      user_data.person_id = default_uuid
-      user_data.story_id = default_uuid
-      user_data.memory_id = default_uuid
+      uuid_data.person_id = default_uuid
+      uuid_data.story_id = default_uuid
+      uuid_data.memory_id = default_uuid
       uuid_data.save
       return default_uuid
     end

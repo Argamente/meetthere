@@ -38,8 +38,8 @@
                     <input type="text" class="form-control" id="signup-nickname" placeholder="昵称"/>
                 </div>
                 <div class="row-3">
-                    <span><input type="radio" name="sex" value="male"/><img src="/images/male.png" style="width:18px;"/></span>
-                    <span><input type="radio" name="sex" valuie="famale"/><img src="/images/famale.png" style="width:18px;"</span>
+                    <span><input type="radio" name="signup-sex" value="1" checked="checked"/><img src="/images/male.png" style="width:18px;"/></span>
+                    <span><input type="radio" name="signup-sex" value="0"/><img src="/images/famale.png" style="width:18px;"</span>
                 </div>
                 <div class="row-4">
                     <input type="email" class="form-control" id="signup-email" placeholder="邮件地址"/>
@@ -60,3 +60,179 @@
     </div>
 </div>
 
+
+<script>
+    $(function(){
+        // 登录邮箱
+        $("#signin-email").change(function(){
+            if(is_valid_email($(this).val())){
+                $(this).css("color","black");
+            }
+            else{
+                $(this).css("color","red");
+            }
+        });
+
+        // 注册邮箱
+        $("#signup-email").change(function(){
+            if(is_valid_email($(this).val())){
+                $(this).css("color","black");
+            }
+            else{
+                $(this).css("color","red");
+            }
+        });
+
+
+        function is_valid_email(test_email){
+            var email = test_email;
+            var reg = /\w+[@]{1}\w+[.]\w+/;
+            if(reg.test(email)){
+                //$(this).css("color","black");
+                return true;
+            }else{
+                //$(this).css("color","red");
+                return false;
+            }
+        }
+
+
+        $("#signin-email").keydown(function(){
+            if(event.keyCode == 13){
+                to_signin();
+            }
+        });
+
+        $("#signin-password").keydown(function(){
+            if(event.keyCode == 13){
+                to_signin();
+            }
+        });
+
+
+
+        // 登录
+        $("#signin-btn").click(function(){
+            to_signin();
+        });
+
+
+        function to_signin(){
+            var email = $.trim($("#signin-email").val());
+            var password = $("#signin-password").val();
+
+            if(email.length == 0){
+                alert("请输入邮箱地址");
+                return;
+            }
+
+            if(is_valid_email(email) == false){
+                alert("邮箱地址不合法");
+                return;
+            }
+
+            if(password.length == 0){
+                alert("请输入密码");
+                return;
+            }
+
+            $.ajax({
+                type:"POST",
+                url:"/tosignin",
+                data:{
+                    _email:email,
+                    _password:password
+                },
+                success:function(data,textStatus,xhr){
+                    if(data.result != null) {
+                        if (data.result == 0) {
+                            // alert("Register Successful");
+                            //alert(data.message);
+                        }
+                        else {
+                            alert(data.message);
+                        }
+                    }
+                }
+            });
+        }
+
+
+        $("#signup-nickname").keydown(function(){
+            if(event.keyCode == 13){
+                to_signup();
+            }
+        });
+
+        $("#signup-email").keydown(function(){
+            if(event.keyCode == 13){
+                to_signup();
+            }
+        });
+
+        $("#signup-password").keydown(function(){
+            if(event.keyCode == 13){
+                to_signup();
+            }
+        });
+
+
+        // 注册
+        $("#signup-btn").click(function(){
+            to_signup();
+        });
+
+
+        function to_signup(){
+            var nickname = $.trim($("#signup-nickname").val());
+            var email = $.trim($("#signup-email").val());
+            var password = $("#signup-password").val();
+            var gender = $("input[name='signup-sex']:checked").val();
+
+            if(nickname.length == 0){
+                alert("昵称不能为空");
+                return;
+            }
+
+
+            if(email.length == 0){
+                alert("邮箱不能为空");
+                return;
+            }
+
+            if(is_valid_email(email) == false){
+                alert("邮箱地址不合法");
+                return;
+            }
+
+            if(password.length < 6){
+                alert("密码为6~32位字母数字和符号组合");
+                return;
+            }
+
+            $.ajax({
+                type:"POST",
+                url:"/tosignup",
+                data:{
+                    _nickname:nickname,
+                    _email:email,
+                    _gender:gender,
+                    _password:password
+                },
+                success:function(data,textStatus,xhr){
+                    if(data.result == 0){
+                        // alert("Register Successful");
+                        alert(data.message);
+                    }
+                    else{
+                        alert(data.message);
+                    }
+                }
+            });
+        }
+
+
+    });
+
+
+</script>
