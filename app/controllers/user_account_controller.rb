@@ -20,8 +20,7 @@ class UserAccountController < ApplicationController
           key = Digest::SHA1.hexdigest(password)
           if key == userAccount.password
               sign_in userAccount
-              redirect_to root_url
-              return
+              result = 0
           else
             message = "密码错误"
             result = 1
@@ -32,10 +31,15 @@ class UserAccountController < ApplicationController
       end
 
 
-      render :json=>{
-                 :result=>result,
-                 :message=>message,
-             }
+      if result == 0
+        render :js => "window.location= '#{root_path}'"     #stackoverflow上的解决方案，也可以把url返回给ajax，然后在view中去重定向页面
+      else
+        render :json=>{
+                   :result=>result,
+                   :message=>message,
+               }
+      end
+
     end
 
     # 注册
