@@ -5,14 +5,13 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'bootstrap/bootstrap.min' %>
-      <%= stylesheet_link_tag 'header' %>
+    <%= stylesheet_link_tag 'bootstrap/bootstrap' %>
     <%= stylesheet_link_tag 'meetthere' %>
     
     <%= yield :head %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'bootstrap/bootstrap.min' %>
+    <%= javascript_include_tag 'bootstrap/bootstrap' %>
 
   </head>
 
@@ -20,10 +19,12 @@
 
 
 
-    <%= render 'layouts/header' %>
+
     <%= yield %>
 
-
+    <!--
+    <span class="glyphicon glyphicon-search"></span>
+    -->
     <% flash.each do |key,value| %>
       <div><%= value %></div>
     <% end %>

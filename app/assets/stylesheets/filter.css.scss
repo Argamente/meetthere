@@ -1,0 +1,72 @@
+$index-max-width:1120px;
+
+// 筛选栏100%浏览器
+.index-filter-container{
+  // border:1px solid red;
+  height:50px;
+  display:-webkit-flex;
+  display:flex;
+  justify-content:center;
+}
+
+// 筛选栏 1120px
+.index-filter-item-container{
+  flex:1;
+  //border:1px solid blue;
+  max-width:$index-max-width;
+
+  display:-webkit-flex;
+  display:flex;
+  align-items:center;
+
+  padding-left:20px;
+  padding-right:20px;
+}
+
+
+// 筛选栏左边栏每一项
+.filter-item{
+  //border:1px solid red;
+  margin-right:10px;
+  height:30px;
+  //width:160px;
+  select{
+    width:160px;
+  }
+}
+
+
+
+// 左边栏flex布局
+.left-part{
+  //border:1px solid red;
+  flex:3;
+  display:-webkit-flex;
+  display:flex;
+}
+
+// 右边栏flex布局，+微调Go按钮
+.right-part{
+  //border:1px solid blue;
+
+  flex:1;
+  display:-webkit-flex;
+  display:flex;
+  justify-content:flex-end;
+  min-width:260px;
+
+  input{
+    border-top-right-radius:0px;
+    border-bottom-right-radius:0px;
+  }
+
+  //Go按钮
+  button{
+    margin:0;
+    //border:1px solid red;
+    //margin-top:-10px;
+    //margin-left:-5px;
+    border-top-left-radius:0px;
+    border-bottom-left-radius:0px;
+  }
+}

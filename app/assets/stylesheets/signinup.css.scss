@@ -77,8 +77,16 @@ body{
     border-radius:5px;
     background-color:white;
     div{
-       // border:1px solid red;
+        //border:1px solid red;
     }
+
+    div:nth-child(2){
+        margin-top:5px;
+       // border:1px solid blue;
+        display:flex;
+        display:-webkit-flex;
+    }
+
 }
 
 // 注册框容器
@@ -89,7 +97,6 @@ body{
     margin-top:10px;
     border-radius:5px;
     background-color:white;
-    
 }
 
 
@@ -114,9 +121,13 @@ body{
 
 // 登录按钮
 #signin-btn{
-    margin-bottom:-5px;
+    //margin-bottom:-5px;
+    margin-top:5px;
+    height:30px;
     width:60px;
     background:#1C9CEC;
+    margin-left:5px;
+    line-height:15px;
 }
 
 #signin-btn:hover{
@@ -124,9 +135,9 @@ body{
 }
 
 
-// 例如框 ，记住我， 忘记密码
+// 登录框 ，记住我， 忘记密码
 .remember-group{
-    margin-top:5px;
+    margin-top:10px;
     font-size:10px;
         
     // 忘记密码
@@ -141,7 +152,7 @@ body{
 // 记住我单选框偏移
 #remember-me{
     margin-left:11px;
-    margin-bottom:8px;
+    //margin-bottom:-20px;
 }
 
 
@@ -196,11 +207,4 @@ body{
     text-align:right;
 }
 
-#signup-btn{
-    //color:black;
-    background:#1C9CEC;
-}
 
-#signup-btn:hover{
-    background:#1290DE;
-}

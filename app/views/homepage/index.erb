@@ -1,7 +1,52 @@
 <% content_for :head do %>
     <%= stylesheet_link_tag 'homepage' %>
+    <%= stylesheet_link_tag 'header' %>
+    <%= stylesheet_link_tag 'filter' %>
+    <!--
+    <%= stylesheet_link_tag 'bootstrap/bootstrap-select' %>
+    <%= javascript_include_tag 'bootstrap/bootstrap-select' %>
+    -->
+    <%= javascript_include_tag 'noone/PCASClass' %>
 <% end %>
 
+<%= render 'homepage/header' %>
 
-<h1>Welcome to MeetThere</h1>
+<%= render 'homepage/filter' %>
+
+
+
+<section class="index-container" id="index-container">
+    <%= render 'homepage/content' %>
+</section>
+
+
+
+
+<!--
+ 可搜索的下拉列表 http://www.jq22.com/yanshi302
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="basic" class="col-lg-2 control-label">"Basic" (liveSearch enabled)</label>
+
+        <div class="col-lg-10">
+            <select id="basic" class="selectpicker show-tick form-control" data-live-search="true">
+                <option>cow</option>
+                <option data-subtext="option subtext">bull</option>
+                <option class="get-class" disabled>ox</option>
+                <optgroup label="test" data-subtext="optgroup subtext">
+                    <option>ASD</option>
+                    <option selected>Bla</option>
+                    <option>Ble</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+</form>
+-->
+
+
+
+
+
+
 

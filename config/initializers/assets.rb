@@ -15,7 +15,19 @@ Rails.application.config.assets.precompile += %w( meetthere.css )
 Rails.application.config.assets.precompile += %w( homepage.css )
 Rails.application.config.assets.precompile += %w( signinup.css )
 Rails.application.config.assets.precompile += %w( header.css )
+Rails.application.config.assets.precompile += %w( filter.css )
 Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.min.css )
-Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.min.js )
 Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.css )
+
+Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.min.js )
 Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.js )
+
+
+
+# bootstrap-select 插件
+Rails.application.config.assets.precompile += %w( bootstrap/bootstrap-select.css )
+Rails.application.config.assets.precompile += %w( bootstrap/bootstrap-select.js )
+
+Rails.application.config.assets.precompile += %w( bootstrap/jquery.min.js )
+
+Rails.application.config.assets.precompile += %w( noone/PCASClass.js )

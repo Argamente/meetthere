@@ -1,0 +1,94 @@
+<section class="index-filter-container">
+    <div class="index-filter-item-container">
+
+        <div class="left-part">
+            <!-- 日期筛选 -->
+            <div class="filter-item-date filter-item">
+                <select class="selectpicker form-control" data-width="160px">
+                    <option>日期</option>
+                    <option>2016.07.26 周二</option>
+                    <option>2016.07.27 周三</option>
+                    <option>2016.07.28 周四</option>
+                    <option>2016.07.29 周五</option>
+                    <option>2016.07.30 周六</option>
+                    <option>2016.07.31 周日</option>
+                </select>
+            </div>
+
+            <!-- 省份筛选-->
+            <div class="filter-item-province filter-item">
+                <select name="province" class="selectpicker form-control" data-width="160px" data-size="10" id="filter-item-province"></select>
+            </div>
+
+            <!-- 城市筛选 -->
+            <div class="filter-item-city filter-item">
+                <select name="city" class="selectpicker form-control" data-width="160px" data-size="10" id="filter-item-city"></select>
+            </div>
+
+            <!-- 区域筛选 -->
+            <div class="filter-item-area filter-item" id="filter-item-area">
+                <select name="area" class="selectpicker form-control" data-width="160px"></select>
+            </div>
+        </div>
+
+        <div class="right-part">
+            <div class="filter-item-search">
+                <input type="text" class="form-control" placeholder="Search for...">
+            </div>
+            <div>
+                <button class="btn btn-default" type="button" id="filter-search-btn">Go!</button>
+            </div>
+        </div>
+</section>
+
+
+
+<script>
+    new PCAS("province","city","area");
+
+
+    $(function(){
+        // 延迟刷新
+        $("#filter-item-province").change(function(){
+            setTimeout(function () {
+                $('.selectpicker').selectpicker('refresh');
+            }, 50);
+        });
+
+        $("#filter-item-city").change(function(){
+            setTimeout(function () {
+                $('.selectpicker').selectpicker('refresh');
+            }, 50);
+        });
+
+        $("#filter-item-area").change(function(){
+            setTimeout(function () {
+                $('.selectpicker').selectpicker('refresh');
+            }, 50);
+        });
+
+
+        $("#filter-search-btn").click(function(){
+            $.ajax({
+                type:"POST",
+                url:"/search",
+                data:{
+                    _tmp:1234
+                },
+                success:function(data,textStatus,xhr){
+                    if(data.result != null) {
+                        if (data.result == 0) {
+                            alert(data.message);
+                        }
+                        else {
+                            alert(data.message);
+                        }
+                    }
+                }
+            });
+        });
+
+
+    });
+
+</script>

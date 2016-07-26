@@ -1,4 +1,28 @@
+$index-max-width:1120px;
 
 body{
     background-image:none;
+    min-width:600px;
+}
+
+
+
+
+// --------------------- 以上 筛选栏结束 --------------
+
+
+
+.index-container{
+    border:1px solid red;
+    display:-webkit-flex;
+    display:flex;
+    //flex-direction:column;
+    justify-content:center;
+}
+
+.index-item-container{
+    border:1px solid blue;
+    flex:1;
+    max-width:$index-max-width;
+    height:100px;
 }
