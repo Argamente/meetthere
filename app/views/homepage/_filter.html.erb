@@ -4,14 +4,11 @@
         <div class="left-part">
             <!-- 日期筛选 -->
             <div class="filter-item-date filter-item">
-                <select class="selectpicker form-control" data-width="160px">
-                    <option>日期</option>
-                    <option>2016.07.26 周二</option>
-                    <option>2016.07.27 周三</option>
-                    <option>2016.07.28 周四</option>
-                    <option>2016.07.29 周五</option>
-                    <option>2016.07.30 周六</option>
-                    <option>2016.07.31 周日</option>
+                <select class="selectpicker form-control" data-width="160px" id="filter-item-date">
+                    <option>--请选择日期--</option>
+                    <% @date_array.each do |date_str| %>
+                        <option><%= date_str %></option>
+                    <% end %>
                 </select>
             </div>
 
@@ -26,14 +23,14 @@
             </div>
 
             <!-- 区域筛选 -->
-            <div class="filter-item-area filter-item" id="filter-item-area">
-                <select name="area" class="selectpicker form-control" data-width="160px"></select>
+            <div class="filter-item-area filter-item">
+                <select name="area" class="selectpicker form-control" data-width="160px" id="filter-item-area"></select>
             </div>
         </div>
 
         <div class="right-part">
             <div class="filter-item-search">
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input type="text" class="form-control" placeholder="Search for..." id="filter-item-input-search">
             </div>
             <div>
                 <button class="btn btn-default" type="button" id="filter-search-btn">Go!</button>
@@ -52,28 +49,72 @@
         $("#filter-item-province").change(function(){
             setTimeout(function () {
                 $('.selectpicker').selectpicker('refresh');
+                dynamic_search();
             }, 50);
+
         });
 
         $("#filter-item-city").change(function(){
             setTimeout(function () {
                 $('.selectpicker').selectpicker('refresh');
+                dynamic_search();
             }, 50);
+
         });
 
         $("#filter-item-area").change(function(){
             setTimeout(function () {
                 $('.selectpicker').selectpicker('refresh');
+                dynamic_search();
             }, 50);
+
+        });
+
+        $("#filter-item-date").change(function(){
+            dynamic_search();
         });
 
 
-        $("#filter-search-btn").click(function(){
+
+        function dynamic_search(){
+            var filter_date = $("#filter-item-date").val();
+            var filter_province = $("#filter-item-province").val();
+            var filter_city = $("#filter-item-city").val();
+            var filter_area = $("#filter-item-area").val();
+
             $.ajax({
                 type:"POST",
                 url:"/search",
                 data:{
-                    _tmp:1234
+                    _search_type:0,
+                    _date_str:filter_date,
+                    _province:filter_province,
+                    _city:filter_city,
+                    _area:filter_area
+                },
+                success:function(data,textStatus,xhr){
+
+                }
+            });
+        }
+
+
+        $("#filter-search-btn").click(function(){
+
+            var key_str = $("#filter-item-input-search").val();
+
+            key_str = $.trim(key_str);
+            if(key_str.length == 0){
+                alert("请输入搜索关键词");
+                return;
+            }
+
+            $.ajax({
+                type:"POST",
+                url:"/search",
+                data:{
+                    _search_type:1,
+                    _key_str:key_str
                 },
                 success:function(data,textStatus,xhr){
                     if(data.result != null) {
