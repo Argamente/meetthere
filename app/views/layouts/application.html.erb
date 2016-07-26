@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'bootstrap/bootstrap.min' %>
+      <%= stylesheet_link_tag 'header' %>
     <%= stylesheet_link_tag 'meetthere' %>
     
     <%= yield :head %>
@@ -16,6 +17,10 @@
   </head>
 
   <body>
+
+
+
+    <%= render 'layouts/header' %>
     <%= yield %>
 
 
