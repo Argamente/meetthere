@@ -19,22 +19,40 @@
                     <div class="form-group date-location-item">
                         <label for="post-item-date">日期</label>
                         <select class="selectpicker form-control" id="post-item-date">
-                            <option>aaa</option>
-                            <option>aaa</option>
-                            <option>aaa</option>
-                            <option>aaa</option>
+                            <option>--请选择日期--</option>
+                            <% @date_array.each do |date_str| %>
+                                <option><%= date_str %></option>
+                            <% end %>
                         </select>
                     </div>
                     <div class="form-group date-location-item">
                         <label for="post-item-time">时间</label>
-                        <select class="selectpicker form-control" id="post-item-time">
-                            <option>1:00</option>
-                            <option>1:00</option>
-                            <option>1:00</option>
-                            <option>1:00</option>
-                            <option>1:00</option>
-                            <option>1:00</option>
-                            <option>1:00</option>
+                        <select class="selectpicker form-control" id="post-item-time" data-size="13">
+                            <option>--请选择时间--</option>
+                            <option>00:00</option>
+                            <option>01:00</option>
+                            <option>02:00</option>
+                            <option>03:00</option>
+                            <option>04:00</option>
+                            <option>05:00</option>
+                            <option>06:00</option>
+                            <option>07:00</option>
+                            <option>08:00</option>
+                            <option>09:00</option>
+                            <option>10:00</option>
+                            <option>11:00</option>
+                            <option>12:00</option>
+                            <option>13:00</option>
+                            <option>14:00</option>
+                            <option>15:00</option>
+                            <option>16:00</option>
+                            <option>17:00</option>
+                            <option>18:00</option>
+                            <option>19:00</option>
+                            <option>20:00</option>
+                            <option>21:00</option>
+                            <option>22:00</option>
+                            <option>23:00</option>
                         </select>
                     </div>
                     <div class="form-group date-location-item">
@@ -102,5 +120,52 @@
                 }, 50);
 
             });
+
+
+            $("#btn-post-story").click(function(){
+                var thing = $.trim($("#story-content").val());
+                var speak = $.trim($("#speak-to-stranger").val());
+                var date = $("#post-item-date").val();
+                var time = $("#post-item-time").val();
+                var province = $("#post-item-province").val();
+                var city = $("#post-item-city").val();
+                var area = $("#post-item-area").val();
+                var detail_location = $.trim($("#detail-location").val());
+                var group = $("#post-item-group").val();
+
+                if(thing.length == 0){
+                    alert("告诉大家你想做的事情吧");
+                    return;
+                }
+
+                if(speak.length == 0){
+                    alert("要不要跟陌生人说点什么呢？");
+                    return;
+                }
+
+
+                $.ajax({
+                    type:"POST",
+                    url:"/topost",
+                    data:{
+                        _thing:thing,
+                        _speak:speak,
+                        _date:date,
+                        _time:time,
+                        _province:province,
+                        _city:city,
+                        _area:area,
+                        _detail_location:detail_location,
+                        _group:group,
+                    },
+                    success:function(data,textStatus,xhr){
+
+                    }
+
+                });
+
+
+            });
+
         });
 </script>

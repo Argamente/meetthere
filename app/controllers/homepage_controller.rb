@@ -24,8 +24,6 @@ class HomepageController < ApplicationController
       now = tomorrow
     end
 
-
-
   end
 
 
