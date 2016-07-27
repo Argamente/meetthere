@@ -1,0 +1,106 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'post' %>
+    <%= stylesheet_link_tag 'header' %>
+    <%= javascript_include_tag 'noone/PCASClass' %>
+<% end %>
+
+<%= render 'homepage/header' %>
+
+<section class="mt-container">
+    <div class="mt-item-container post-container">
+        <div class="post-content-box">
+            <div class="postbox-left">
+                <img src="/images/headicon/head.png"/>
+            </div>
+            <div class="postbox-right">
+                <input type="text" class="form-control" id="story-content" placeholder="你想要做的事情"/>
+                <input type="text" class="form-control" id="speak-to-stranger" placeholder="你想对ta说的话"/>
+                <div class="date-locatino-box">
+                    <div class="form-group date-location-item">
+                        <label for="post-item-date">日期</label>
+                        <select class="selectpicker form-control" id="post-item-date">
+                            <option>aaa</option>
+                            <option>aaa</option>
+                            <option>aaa</option>
+                            <option>aaa</option>
+                        </select>
+                    </div>
+                    <div class="form-group date-location-item">
+                        <label for="post-item-time">时间</label>
+                        <select class="selectpicker form-control" id="post-item-time">
+                            <option>1:00</option>
+                            <option>1:00</option>
+                            <option>1:00</option>
+                            <option>1:00</option>
+                            <option>1:00</option>
+                            <option>1:00</option>
+                            <option>1:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group date-location-item">
+                        <label for="post-item-province">省份</label>
+                        <select class="selectpicker form-control" id="post-item-province" data-size="15" name="post-item-province">
+
+                        </select>
+                    </div>
+                    <div class="form-group date-location-item">
+                        <label for="post-item-city">城市</label>
+                        <select class="selectpicker form-control" id="post-item-city" data-size="15" name="post-item-city">
+
+                        </select>
+                    </div>
+                    <div class="form-group date-location-item">
+                        <label for="post-item-area">地区</label>
+                        <select class="selectpicker form-control" id="post-item-area" data-size="15" name="post-item-area">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="location-detail-box">
+                    <input type="text" class="form-control" id="detail-location" placeholder="详细坐标 (例如: 江桥万达影院5号厅7排12座)"/>
+                    <select class="selectpicker form-control" id="post-item-group" data-width="160px">
+                        <option value="one">一个人</option>
+                        <option value="two">两个人</option>
+                        <option value="three">三介人</option>
+                        <option value="four">四个人</option>
+                        <option value="five">五个人</option>
+                        <option value="more">一群人</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-btn-box">
+            <button id="btn-post-story" class="btn btn-danger">发约</button>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    new PCAS("post-item-province","post-item-city","post-item-area");
+
+        $(function(){
+            // 延迟刷新
+            $("#post-item-province").change(function(){
+                setTimeout(function () {
+                    $('.selectpicker').selectpicker('refresh');
+                }, 50);
+
+            });
+
+            $("#post-item-city").change(function(){
+                setTimeout(function () {
+                    $('.selectpicker').selectpicker('refresh');
+                }, 50);
+
+            });
+
+            $("#post-item-area").change(function(){
+                setTimeout(function () {
+                    $('.selectpicker').selectpicker('refresh');
+                }, 50);
+
+            });
+        });
+</script>

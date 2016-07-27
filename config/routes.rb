@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   match '/tosignup', to:'user_account#tosignup', via:'post'
 
   match '/search', to:'homepage#search', via:'post'
+
+  match '/post', to:'story#post', via:'get'
+  match '/topost', to:'story#topost',via:'post'
+
 end

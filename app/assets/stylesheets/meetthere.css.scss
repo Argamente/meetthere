@@ -1,5 +1,6 @@
 /* Global css style */
 
+$index-max-width:1120px;
 
 @font-face{
   font-family: 'dongqingheiti';
@@ -39,4 +40,32 @@ body{
     margin:0;
     padding:0;
     overflow-y:scroll;
+}
+
+// 整个浏览器的宽度
+.mt-container{
+  //border:2px solid red;
+  display:-webkit-flex;
+  display:flex;
+  justify-content:center;
+}
+
+// 中间，1120px 宽度
+.mt-item-container{
+  //border:1px solid blue;
+  flex:1;
+  max-width:$index-max-width;
+  //height:100px;
+}
+
+.debug-red{
+  border:1px solid red;
+}
+
+.debug-blue{
+  border:1px solid blue;
+}
+
+.debug-green{
+  border:1px solid green;
 }

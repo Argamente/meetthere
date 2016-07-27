@@ -1,0 +1,102 @@
+// 发布框和按钮容器（因为这个内容比1120小，所以包了这层）
+
+body{
+  background-color:#f5f8fa;
+}
+
+
+.post-container{
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+}
+
+// 发布框容器
+.post-content-box{
+  width:960px;
+  height:257px;
+  display:-webkit-flex;
+  display:flex;
+  padding:10px;
+
+  border:2px solid #c4c4c4;
+  border-radius:5px;
+  margin-top:150px;
+  background-color:white;
+}
+
+.postbox-left{
+  width:70px;
+  margin-right:10px;
+
+  img{
+    width:60px;
+    height:60px;
+    border-radius:5px;
+  }
+}
+
+
+
+
+// 右边部分
+.postbox-right{
+  flex:1;
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:column;
+}
+
+#story-content{
+  height:41px;
+  font-size:18px;
+}
+
+#speak-to-stranger{
+  height:34px;
+  margin-top:15px;
+}
+
+// 选择时间和地区的框
+.date-locatino-box{
+  display:-webkit-flex;
+  display:flex;
+  //height:60px;
+  margin-top:30px;
+}
+
+// 时间和地区每一项的div
+.date-location-item{
+  flex:1;
+  //height:100%;
+  margin-right:10px;
+}
+
+
+// 详细信息和人数
+.location-detail-box{
+  display:-webkit-flex;
+  display:flex;
+  padding-right:10px;
+  // 详细地址信息右边空10像素
+  input{
+    margin-right:10px;
+  }
+}
+
+
+
+
+
+// 发布按钮容器
+.post-btn-box{
+  margin-top:100px;
+}
+
+#btn-post-story{
+  width:267px;
+  height:84px;
+  font-size:30px;
+}
