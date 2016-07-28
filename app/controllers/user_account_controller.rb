@@ -42,6 +42,13 @@ class UserAccountController < ApplicationController
 
     end
 
+
+    def signout
+      sign_out
+      redirect_to root_url
+    end
+
+
     # 注册
     def signup
 

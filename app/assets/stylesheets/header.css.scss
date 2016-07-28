@@ -12,7 +12,7 @@
 
 .nav-with-signin,
 .nav-with-signout{
-  //border:1px solid blue;
+ // border:1px solid blue;
   height:100%;
   width:100%;
 
@@ -25,26 +25,74 @@
 }
 
 .nav-with-signin{
-  display:none;
+  //display:none;
+  justify-content:space-between;
+  padding-top:5px;
 }
 
+.mt-nav-group{
+  display:-webkit-flex;
+  display:flex;
+  justify-content:flex-end;
+
+  // 登录后的头像显示
+  img{
+    width:40px;
+    height:40px;
+    border-radius:50px;
+  }
+}
+
+// 发约按钮
+#btn-story{
+  width:85px;
+  height:35px;
+  padding-top:7px;
+  font-size:14px;
+}
+
+// 设置按钮
+#dropdownMenu1{
+  border:0;
+  border-radius:50px;
+  background:rgb(248,248,248);
+  //border:1px solid red;
+  span{
+    font-size:25px;
+    margin-top:3px;
+    color:#0099ff;
+  }
+
+  span:hover{
+    color:#0099d0;
+  }
+}
+
+// 设置的下拉菜单
+.nav-setting-dropdown-menu{
+  margin-top:-5px;
+}
+
+
+
+.mt-nav-item{
+  margin-left:20px;
+}
+
+
+
+
 .nav-with-signout{
+  //display:none;
   justify-content:space-between;
   p{
-    //border:1px solid red;
     margin:0;
   }
+}
 
-  p:nth-child(1){
-    margin-left:20px;
-    font-size:18px;
-    color:#365899;
 
-  }
-
-  p:nth-child(2){
-    margin-right:20px;
-  }
-
+.mt-nav-title{
+  font-size:18px;
+  color:#365899;
 }
 

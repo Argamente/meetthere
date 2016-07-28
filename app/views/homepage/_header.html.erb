@@ -1,10 +1,29 @@
 <nav class="mt-navbar">
-    <div class="nav-with-signin">
 
+    <% if signed_in? %>
+    <div class="nav-with-signin">
+        <p class="mt-nav-title"><strong>MeetThere 遇见新的故事</strong></p>
+        <div class="mt-nav-group">
+            <img src="/images/headicon/head.png" class="mt-nav-item"/>
+            <button type="button" class="btn btn-danger mt-nav-item" id="btn-story"onclick="location='/post'">发约</button>
+            <div class="dropdown mt-nav-item">
+                <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown-menu nav-setting-dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">设置</a></li>
+                    <li><a href="/signout">退出</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
+
+    <% else %>
 
     <div class="nav-with-signout">
-        <p><strong>MeetThere 遇见新的故事</strong></p>
+        <p class="mt-nav-title"><strong>MeetThere 遇见新的故事</strong></p>
         <p><button class="btn btn-info" onclick="location='/signin'">登录发约</button></p>
     </div>
+    <% end %>
 </nav>
+

@@ -36,7 +36,7 @@ module SessionHelper
 
   def sign_out
     self.current_account = nil
-    cookies.delete(:remember_token)
+    cookies.delete(:meetthere_remember_token)
   end
 
   def store_location
