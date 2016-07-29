@@ -24,6 +24,11 @@ class HomepageController < ApplicationController
       now = tomorrow
     end
 
+
+
+    # 数据查询
+    @stories = Story.all
+
   end
 
 
@@ -45,8 +50,6 @@ class HomepageController < ApplicationController
 
 
    @rand_number = rand(10000)
-
-
 
     respond_to do |format|
       format.js

@@ -29,30 +29,30 @@
                         <label for="post-item-time">时间</label>
                         <select class="selectpicker form-control" id="post-item-time" data-size="13">
                             <option>--请选择时间--</option>
-                            <option>00:00</option>
-                            <option>01:00</option>
-                            <option>02:00</option>
-                            <option>03:00</option>
-                            <option>04:00</option>
-                            <option>05:00</option>
-                            <option>06:00</option>
-                            <option>07:00</option>
-                            <option>08:00</option>
-                            <option>09:00</option>
-                            <option>10:00</option>
-                            <option>11:00</option>
-                            <option>12:00</option>
-                            <option>13:00</option>
-                            <option>14:00</option>
-                            <option>15:00</option>
-                            <option>16:00</option>
-                            <option>17:00</option>
-                            <option>18:00</option>
-                            <option>19:00</option>
-                            <option>20:00</option>
-                            <option>21:00</option>
-                            <option>22:00</option>
-                            <option>23:00</option>
+                            <option>凌晨00点</option>
+                            <option>凌晨01点</option>
+                            <option>凌晨02点</option>
+                            <option>凌晨03点</option>
+                            <option>凌晨04点</option>
+                            <option>凌晨05点</option>
+                            <option>早晨06点</option>
+                            <option>早晨07点</option>
+                            <option>早晨08点</option>
+                            <option>上午09点</option>
+                            <option>上午10点</option>
+                            <option>上午11点</option>
+                            <option>中午12点</option>
+                            <option>下午01点</option>
+                            <option>下午02点</option>
+                            <option>下午03点</option>
+                            <option>下午04点</option>
+                            <option>下午05点</option>
+                            <option>下午06点</option>
+                            <option>晚上07点</option>
+                            <option>晚上08点</option>
+                            <option>晚上09点</option>
+                            <option>早上10点</option>
+                            <option>晚上11点</option>
                         </select>
                     </div>
                     <div class="form-group date-location-item">
@@ -77,12 +77,12 @@
                 <div class="location-detail-box">
                     <input type="text" class="form-control" id="detail-location" placeholder="详细坐标 (例如: 江桥万达影院5号厅7排12座)"/>
                     <select class="selectpicker form-control" id="post-item-group" data-width="160px">
-                        <option value="one">一个人</option>
-                        <option value="two">两个人</option>
-                        <option value="three">三介人</option>
-                        <option value="four">四个人</option>
-                        <option value="five">五个人</option>
-                        <option value="more">一群人</option>
+                        <option>一个人</option>
+                        <option>两个人</option>
+                        <option>三介人</option>
+                        <option>四个人</option>
+                        <option>五个人</option>
+                        <option>一群人</option>
                     </select>
                 </div>
             </div>
@@ -122,16 +122,24 @@
             });
 
 
+            var post_lock = false;
+
             $("#btn-post-story").click(function(){
+
+                if(post_lock){
+                    return;
+                }
+
                 var thing = $.trim($("#story-content").val());
                 var speak = $.trim($("#speak-to-stranger").val());
                 var date = $("#post-item-date").val();
                 var time = $("#post-item-time").val();
-                var province = $("#post-item-province").val();
+                var province = $.trim($("#post-item-province").val());
                 var city = $("#post-item-city").val();
                 var area = $("#post-item-area").val();
                 var detail_location = $.trim($("#detail-location").val());
                 var group = $("#post-item-group").val();
+
 
                 if(thing.length == 0){
                     alert("告诉大家你想做的事情吧");
@@ -143,6 +151,28 @@
                     return;
                 }
 
+
+                if(date == "--请选择日期--"){
+                    alert("选择一下日期吧");
+                    return;
+                }
+
+
+                if(province == ""){
+                    alert("你在哪个省呢？");
+                    return;
+                }
+
+
+                if(city == "市辖区" || city == "市辖县"){
+                    city = "";
+                }
+
+                if(area == "市辖区" || area == "市辖县"){
+                    area = "";
+                }
+
+                post_lock = true;
 
                 $.ajax({
                     type:"POST",

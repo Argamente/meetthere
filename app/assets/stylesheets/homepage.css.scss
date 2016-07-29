@@ -3,6 +3,7 @@ $index-max-width:1120px;
 body{
     background-image:none;
     min-width:600px;
+    background:#F5F8FA;
 }
 
 
@@ -11,18 +12,24 @@ body{
 // --------------------- 以上 筛选栏结束 --------------
 
 
-
+// 首页所有故事容器（浏览器100%宽度）
 .index-container{
-    border:1px solid red;
+    //border:1px solid red;
     display:-webkit-flex;
     display:flex;
     //flex-direction:column;
     justify-content:center;
 }
 
+// 首页所有故事容器（固定1120宽度，屏幕居中）
 .index-item-container{
-    border:1px solid blue;
+    //border:1px solid blue;
     flex:1;
     max-width:$index-max-width;
-    //height:100px;
+
+    display:-webkit-flex;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
+
