@@ -27,11 +27,33 @@ class StoryController < ApplicationController
     speak = params[:_speak]
     date = params[:_date]
     time = params[:_time]
+
+    date_year = params[:_date_year].to_i
+    date_month = params[:_date_month].to_i
+    date_day = params[:_date_day].to_i
+    time_hour = params[:_time_hour].to_i
+    time_minute = params[:_time_minute].to_i
+
     province = params[:_province]
     city = params[:_city]
     area = params[:_area]
     detail_location = params[:_detail_location]
     group = params[:_group]
+
+    timestamp = DateTime.new(date_year,date_month,date_day,time_hour,time_minute,0,"+8").to_i
+    now_timestamp = DateTime.now.to_i
+
+    if timestamp < now_timestamp
+      render :json=>{
+                 :result=>1,
+                 :message=>"时间错误，无法在历史中创造遇见",
+                 :nowtime=>now_timestamp,
+                 :time=>timestamp,
+             }
+
+      return
+    end
+
 
     story_id = get_uuid_by_type(2)
 
@@ -40,12 +62,18 @@ class StoryController < ApplicationController
         :wantsay=>speak,
         :date_str=>date,
         :time_str=>time,
-        :story_timestamp=>DateTime.now.to_i,
+        :story_timestamp=>timestamp,
         :addr_province=>province,
         :addr_city=>city,
         :area=>area,
         :addr_detail=>detail_location,
         :group_str=>group,
+        :story_id=>story_id,
+        :date_year=>date_year,
+        :date_month=>date_month,
+        :date_day=>date_day,
+        :time_hour=>time_hour,
+        :time_minute=>time_minute,
     )
 
     #new_story.save

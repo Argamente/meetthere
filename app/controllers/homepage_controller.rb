@@ -25,9 +25,12 @@ class HomepageController < ApplicationController
     end
 
 
+    now_timestamp = DateTime.now.to_i
 
     # 数据查询
-    @stories = Story.all
+   # @stories = Story.all(:conditions=>["story_timestamp > :now_timestamp"])
+
+    @stories = Story.where("story_timestamp > ?",now_timestamp).order('created_at DESC')
 
   end
 

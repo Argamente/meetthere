@@ -29,30 +29,30 @@
                         <label for="post-item-time">时间</label>
                         <select class="selectpicker form-control" id="post-item-time" data-size="13">
                             <option>--请选择时间--</option>
-                            <option>凌晨00点</option>
-                            <option>凌晨01点</option>
-                            <option>凌晨02点</option>
-                            <option>凌晨03点</option>
-                            <option>凌晨04点</option>
-                            <option>凌晨05点</option>
-                            <option>早晨06点</option>
-                            <option>早晨07点</option>
-                            <option>早晨08点</option>
-                            <option>上午09点</option>
-                            <option>上午10点</option>
-                            <option>上午11点</option>
-                            <option>中午12点</option>
-                            <option>下午01点</option>
-                            <option>下午02点</option>
-                            <option>下午03点</option>
-                            <option>下午04点</option>
-                            <option>下午05点</option>
-                            <option>下午06点</option>
-                            <option>晚上07点</option>
-                            <option>晚上08点</option>
-                            <option>晚上09点</option>
-                            <option>早上10点</option>
-                            <option>晚上11点</option>
+                            <option value="0">凌晨00点</option>
+                            <option value="1">凌晨01点</option>
+                            <option value="2">凌晨02点</option>
+                            <option value="3">凌晨03点</option>
+                            <option value="4">凌晨04点</option>
+                            <option value="5">凌晨05点</option>
+                            <option value="6">早晨06点</option>
+                            <option value="7">早晨07点</option>
+                            <option value="8">早晨08点</option>
+                            <option value="9">上午09点</option>
+                            <option value="10">上午10点</option>
+                            <option value="11">上午11点</option>
+                            <option value="12">中午12点</option>
+                            <option value="13">下午01点</option>
+                            <option value="14">下午02点</option>
+                            <option value="15">下午03点</option>
+                            <option value="16">下午04点</option>
+                            <option value="17">下午05点</option>
+                            <option value="18">下午06点</option>
+                            <option value="19">晚上07点</option>
+                            <option value="20">晚上08点</option>
+                            <option value="21">晚上09点</option>
+                            <option value="22">早上10点</option>
+                            <option value="23">晚上11点</option>
                         </select>
                     </div>
                     <div class="form-group date-location-item">
@@ -133,7 +133,7 @@
                 var thing = $.trim($("#story-content").val());
                 var speak = $.trim($("#speak-to-stranger").val());
                 var date = $("#post-item-date").val();
-                var time = $("#post-item-time").val();
+                var time = $("#post-item-time option:selected").text();
                 var province = $.trim($("#post-item-province").val());
                 var city = $("#post-item-city").val();
                 var area = $("#post-item-area").val();
@@ -172,6 +172,30 @@
                     area = "";
                 }
 
+
+                // 解析日期中的三段
+                var date_str = date.substring(0,10);
+                var date_array = date_str.split('.');
+                var date_year = parseInt(date_array[0]);
+                var date_month = parseInt(date_array[1]);
+                var date_day = parseInt(date_array[2]);
+
+
+                // 解析时间两个字段
+                var time_hour = 0;
+                var time_minute = 0;
+
+                if(time != "--请选择时间--"){
+                    time_hour = parseInt($("#post-item-time").val());
+                    time_minute = 0;
+                }
+                else{
+                    time = "";
+                }
+
+
+
+
                 post_lock = true;
 
                 $.ajax({
@@ -182,6 +206,11 @@
                         _speak:speak,
                         _date:date,
                         _time:time,
+                        _date_year:date_year,
+                        _date_month:date_month,
+                        _date_day:date_day,
+                        _time_hour:time_hour,
+                        _time_minute:time_minute,
                         _province:province,
                         _city:city,
                         _area:area,
@@ -189,6 +218,10 @@
                         _group:group,
                     },
                     success:function(data,textStatus,xhr){
+                        if(data.result != null && data.result != 0){
+                            alert(data.message);
+                            post_lock = false;
+                        }
 
                     }
 

@@ -1,56 +1,46 @@
 <div class="index-item-container">
 
-    <div class="story-item">
-        <div class="story-left-part">
-            <img src="/images/headicon/head.png"/>
-            <img src="/images/male.png" />
-        </div>
 
-        <div class="story-right-part">
-            <div class="story-content">舞动弓弦—劳伦•柯西亚小提琴独奏音乐会</div>
-            <div class="story-wantsay">每一场音乐会，我喜欢坐在角落里，我喜欢坐在角落里，看着你专注的神情</div>
-            <div class="story-plan-info"><b>2016.06.18 周六 下午3:00 上海 浦东新区 上海音乐厅 一个人</b></div>
-            <div class="story-link-info">
-                <div class="story-message">
-                    <a><span class="glyphicon glyphicon-envelope"></span></a>
-                    <span>约 Ta</span>
+    <% @stories.each do |story| %>
+
+            <div class="story-item">
+                <div class="story-left-part">
+                    <img src="/images/headicon/head.png"/>
+                    <img src="/images/male.png" />
                 </div>
 
-                <div class="story-like">
-                    <a><span class="glyphicon glyphicon-heart"></span></a>
-                    <span><b>5</b></span>
-                </div>
+                <div class="story-right-part">
+                    <div class="story-content"><%= story.content %></div>
+                    <div class="story-wantsay"><%= story.wantsay %></div>
+                    <div class="story-plan-info">
+                        <b>
+                            <%= story.date_str %>
+                            <%= story.time_str %>
+                            <%= story.addr_province %>
+                            <%= story.addr_city %>
+                            <%= story.area %>
+                            <%= story.addr_detail %>
+                            <%= story.group_str %>
+                        </b>
+                    </div>
+                    <div class="story-link-info">
+                        <div class="story-message">
+                            <a><span class="glyphicon glyphicon-envelope"></span></a>
+                            <span>约 Ta</span>
+                        </div>
 
+                        <div class="story-like">
+                            <a><span class="glyphicon glyphicon-heart"></span></a>
+                            <span><b>5</b></span>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="story-item">
-        <div class="story-left-part">
-            <img src="/images/headicon/head.png"/>
-            <img src="/images/male.png" />
-        </div>
-
-        <div class="story-right-part">
-            <div class="story-content">舞动弓弦—劳伦•柯西亚小提琴独奏音乐会</div>
-            <div class="story-wantsay">每一场音乐会，我喜欢坐在角落里，我喜欢坐在角落里，看着你专注的神情</div>
-            <div class="story-plan-info"><b>2016.06.18 周六 下午3:00 上海 浦东新区 上海音乐厅 一个人</b></div>
-            <div class="story-link-info">
-                <div class="story-message">
-                    <a><span class="glyphicon glyphicon-envelope"></span></a>
-                    <span>约 Ta</span>
-                </div>
-
-                <div class="story-like">
-                    <a><span class="glyphicon glyphicon-heart"></span></a>
-                    <span><b>5</b></span>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+    <% end %>
 
 
 </div>
+
 
