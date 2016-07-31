@@ -1,5 +1,12 @@
 class StoryController < ApplicationController
   def post
+
+    if !signed_in?
+      redirect_to signin_url
+      return
+    end
+
+
     wday_array = ['周日','周一','周二','周三','周四','周五','周六']
 
     # @rand_number = rand(100000)
