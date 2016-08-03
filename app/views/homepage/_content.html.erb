@@ -3,10 +3,14 @@
 
     <% @stories.each do |story| %>
 
-            <div class="story-item">
+            <div class="story-item" name="<%= story.story_id %>">
                 <div class="story-left-part">
                     <img src="/images/headicon/head.png"/>
+                    <% if story.person.gender == 1 %>
                     <img src="/images/male.png" />
+                    <% else %>
+                    <img src="/images/famale.png"/>
+                    <% end %>
                 </div>
 
                 <div class="story-right-part">
@@ -29,18 +33,77 @@
                             <span>约 Ta</span>
                         </div>
 
+                        <!-- 把 like 功能先去提吧
                         <div class="story-like">
                             <a><span class="glyphicon glyphicon-heart"></span></a>
                             <span><b>5</b></span>
                         </div>
+                        -->
+                    </div>
 
+                    <div class="post-memory-holder">
+                        <div><textarea placeholder="这里需要点内容"></textarea></div>
+                        <div>
+                            <button class="btn btn-info btn-xs btn-message-confirm">确定</button>
+                            <button class="btn btn-default btn-xs btn-message-cancel">取消</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
     <% end %>
-
-
 </div>
 
 
+<script>
+
+    $(function(){
+        // 显示留言框
+        $(".story-message").click(function(){
+
+            <% if signed_in? %>
+            $(this).parent().next().show();
+            <% else %>
+            window.location="/signin";
+            <% end %>
+        });
+
+        // 留言确定
+        $(".btn-message-confirm").click(function(){
+            var message = $.trim($(this).parent().parent().find("textarea").val());
+            var story_id = $(this).parent().parent().parent().parent().attr("name");
+
+            if(message.length == 0){
+                $(this).parent().parent().find("textarea").val("");
+                return;
+            }
+
+
+            $.ajax({
+                type:"POST",
+                url:"/postmemory",
+                data:{
+                    _story_id:story_id,
+                    _message:message,
+                },
+                success:function(data,textStatus,xhr){
+                    if(data.result == 0){
+                        alert("留言成功");
+                    }
+                    else{
+                        alert("留言失败:" + data.message);
+                    }
+                }
+            });
+
+
+            $(this).parent().parent().hide();
+            $(this).parent().parent().find("textarea").val("");
+        });
+
+        $(".btn-message-cancel").click(function(){
+            $(this).parent().parent().find("textarea").val("");
+            $(this).parent().parent().hide();
+        });
+    });
+</script>

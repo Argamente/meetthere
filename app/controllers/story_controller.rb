@@ -93,5 +93,44 @@ class StoryController < ApplicationController
   end
 
 
+  # 一条留言
+  def topost_memory
+    if !signed_in?
+      render :json=>{
+                 :result=>1,
+                 :message=>"尚未登录，无法留言",
+             }
+
+      return
+    end
+
+    story_id = params[:_story_id].to_i
+    message = params[:_message]
+
+    curr_story = Story.find_by_story_id(story_id)
+    if curr_story.nil?
+      result = 1
+      message = "未找到指定的活动"
+    else
+      memory_id = get_uuid_by_type(3)
+      account_id = current_account.account_id
+      curr_story.memories.create!(
+                             :story_id=>story_id,
+                             :content=>message,
+                             :memory_id=>memory_id,
+                             :account_id=>account_id,
+      )
+      result = 0
+      message = "添加留言成功"
+    end
+
+    render :json=>{
+               :result=>result,
+               :message=>message,
+           }
+
+  end
+
+
 
 end
