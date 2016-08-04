@@ -2,9 +2,9 @@
 
     <% if signed_in? %>
     <div class="nav-with-signin">
-        <p class="mt-nav-title"><strong>MeetThere 遇见新的故事</strong></p>
+        <p><strong><%= link_to 'MeetThere 遇见新的故事',root_url,:class=>"mt-nav-title" %></strong></p>
         <div class="mt-nav-group">
-            <img src="/images/headicon/head.png" class="mt-nav-item"/>
+            <img src="/images/headicon/head.png" class="mt-nav-item" id="nav-head-icon"/>
             <button type="button" class="btn btn-danger mt-nav-item" id="btn-story"onclick="location='/post'">发约</button>
             <div class="dropdown mt-nav-item">
                 <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -27,3 +27,12 @@
     <% end %>
 </nav>
 
+<script>
+    <% if signed_in? %>
+    $(function(){
+        $("#nav-head-icon").click(function(){
+           window.location = "/user/" + <%= current_account.account_id %>;
+        });
+    });
+    <% end %>
+</script>

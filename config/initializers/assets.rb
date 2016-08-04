@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w( header.css )
 Rails.application.config.assets.precompile += %w( filter.css )
 Rails.application.config.assets.precompile += %w( post.css )
 Rails.application.config.assets.precompile += %w( content.css )
+Rails.application.config.assets.precompile += %w( person.css )
 Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.min.css )
 Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.css )
 

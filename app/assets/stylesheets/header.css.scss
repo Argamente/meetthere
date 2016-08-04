@@ -80,6 +80,9 @@
 }
 
 
+#nav-head-icon{
+  cursor:pointer;
+}
 
 
 .nav-with-signout{
@@ -93,6 +96,11 @@
 
 .mt-nav-title{
   font-size:18px;
+  color:#365899;
+}
+
+.mt-nav-title:hover{
+  text-decoration:none;
   color:#365899;
 }
 

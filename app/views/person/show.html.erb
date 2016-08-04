@@ -1,0 +1,153 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag 'person' %>
+    <%= stylesheet_link_tag 'header' %>
+<% end %>
+
+<%= render 'homepage/header' %>
+
+<section class="mt-container debug-red">
+    <div class="mt-item-container user-info-holder debug-blue">
+        <div class="top-jumbotron">
+
+        </div>
+
+        <div class="center-tab-bar">
+            <div class="content-tab-part">
+                <% if @is_master_user %>
+                <div class="tab-bar-item" name="story">
+                    <span class="tab-item-title"><strong>我的故事</strong></span>
+                    <span class="tab-item-count"><strong>20</strong></span>
+                    <span class="tab-item-line"></span>
+                </div>
+
+                <div class="tab-bar-item" name="meet">
+                    <span class="tab-item-title"><strong>我的遇见</strong></span>
+                    <span class="tab-item-count"><strong>14</strong></span>
+                    <span class="tab-item-line"></span>
+                </div>
+
+                <div class="tab-bar-item" name="like">
+                    <span class="tab-item-title"><strong>我喜欢的</strong></span>
+                    <span class="tab-item-count"><strong>25</strong></span>
+                    <span class="tab-item-line"></span>
+                </div>
+                <% else %>
+                    <div class="tab-bar-item" name="story">
+                        <span class="tab-item-title"><strong>Ta的故事</strong></span>
+                        <span class="tab-item-count"><strong>20</strong></span>
+                        <!--<span class="tab-item-line"></span>-->
+                    </div>
+                <% end %>
+            </div>
+            <% if @is_master_user %>
+            <div class="content-tab-part content-tab-part-right">
+                <button class="btn btn-default" id="btn-edit-user-info">编辑个人资料</button>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="bottom-content debug-green">
+            <div class="content-left debug-red">
+                <div class="avatar">
+                    <img src="/images/headicon/ted.jpg"/>
+                </div>
+                <div class="name-gender">
+                    <span><strong>Fred</strong></span>
+                    <span><img src="/images/male.png"/></span>
+                </div>
+                <div class="birthday">
+                    生日: 1992.12.09
+                </div>
+                <div class="location">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    <span>上海市浦东新区</span>
+                </div>
+                <div class="follow-my-heart">
+                    I'm waiting for ...
+                </div>
+                <div class="join-time">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    <span>加入于: 2016年8月4日</span>
+                </div>
+            </div>
+            <div class="content-right debug-green">
+                <div class="content-item" name="story">
+
+                    <div class="story-item">
+                        <div class="story-item-content">
+                            <div class="story-content-left">
+                                <img src="/images/headicon/ted.jpg"/>
+                            </div>
+                            <div class="story-content-right">
+                                <div class="story-content">
+                                    去迪士尼
+                                </div>
+                                <div class="story-wantsay">
+                                    周六有没有一起去迪士尼的小伙伴周六有没有一起去迪士尼的小伙伴周六有没有一周六有没有一起去迪士尼的小伙伴周六有没有一起去迪士尼的小伙伴周六有没有一周六有没有一起去迪士尼的小伙伴周六有没有一起去迪士尼的小伙伴周六有没有一起去迪士尼的小伙伴周六有没有一起去迪士尼的小伙伴起去迪士尼的小伙伴周六有没有一起去迪士尼的小伙伴起去迪士尼的小伙伴周六有没有一起去迪士尼的小伙伴
+                                </div>
+                                <div class="story-plan-info">
+                                    2016.08.06 周六 下午02点 香港特别行政区 香港 香港特别行政区 一个人
+                                </div>
+                                <div class="story-link-info">
+                                    <div class="story-message">
+                                        <span class="glyphicon glyphicon-envelope"></span>
+                                        <span>18</span>
+                                    </div>
+
+                                    <!-- 把 like 功能先去提吧
+                                    <div class="story-like">
+                                        <a><span class="glyphicon glyphicon-heart"></span></a>
+                                        <span><b>5</b></span>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="story-item-comments">
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <% if @is_master_user %>
+                <div class="content-item" name="meet">
+                    Meet
+                </div>
+                <div class="content-item" name="like">
+                    Like
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(function(){
+        $(".tab-bar-item[name=story]").children(".tab-item-line").show();
+        $(".content-item[name=story]").show();
+
+        <% if @is_master_user %>
+        $(".tab-bar-item").click(function(){
+            var name = $(this).attr("name");
+            var curr_tab_item_class = ".tab-bar-item[name=" + name + "]";
+            var curr_content_item_class = ".content-item[name=" + name + "]";
+
+            if($(curr_tab_item_class).children(".tab-item-line").css("display")=='none'){
+                $(".tab-item-line").hide();
+                $(".content-item").hide();
+                $(curr_tab_item_class).children(".tab-item-line").show();
+                $(curr_content_item_class).show();
+            }
+        });
+
+        $("#btn-edit-user-info").click(function(){
+
+        });
+
+        <% end %>
+    });
+</script>

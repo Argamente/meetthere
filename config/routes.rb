@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   match '/topost', to:'story#topost',via:'post'
   match '/postmemory', to:'story#topost_memory', via:'post'
 
+  match '/user/:id', to:'person#show', via:'get'
+
 end
