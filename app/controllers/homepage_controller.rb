@@ -31,7 +31,6 @@ class HomepageController < ApplicationController
    # @stories = Story.all(:conditions=>["story_timestamp > :now_timestamp"])
 
     @stories = Story.where("story_timestamp > ?",now_timestamp).order('created_at DESC')
-    $visiter_count += 1
   end
 
 
