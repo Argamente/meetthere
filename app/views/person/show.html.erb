@@ -71,8 +71,9 @@
                 </div>
             </div>
             <div class="content-right debug-green">
+                <!-- 我的故事 Tab对应面板 -->
                 <div class="content-item" name="story">
-
+                    <!-- 每一个Story开始 -->
                     <div class="story-item">
                         <div class="story-item-content">
                             <div class="story-content-left">
@@ -103,14 +104,58 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- 每一个Story的留言区域 -->
                         <div class="story-item-comments">
+                            <HR align=right width=720 color=#987cb9 SIZE=1>
 
+                            <!-- 每一个留言开始 -->
+                            <div class="comment-item">
+                                <div class="comment-item-left">
+                                    <img src="/images/headicon/ted.jpg"/>
+                                </div>
+
+                                <!-- 主评论右边部分开始 -->
+                                <div class="comment-item-right">
+                                    <div class="comment-content">
+                                        <strong>Fred: </strong>以为早已忘记，曾经和你的约定曾经和你的约定曾经和你的约定。不曾怀疑，这样的约定，突然之间一场大雨让我们又回到原地。
+                                    </div>
+                                    <div class="comment-info">
+                                        <span>3小时前</span>
+                                        <span><a>回复</a></span>
+                                        <span><a>删除</a></span>
+                                    </div>
+
+                                    <!-- 子留言开始 -->
+                                    <div class="comment-sub-item-holder">
+                                        <div class="comment-sub-item">
+                                            <div class="comment-sub-item-left">
+                                                <img src="/images/headicon/ted.jpg"/>
+                                            </div>
+
+                                            <div class="comment-sub-item-right">
+                                                <div class="comment-content">
+                                                    <strong>Fred: </strong>以为早已忘记，曾经和你的约定曾经和你的约定曾经和你的约定。不曾怀疑，这样的约定，突然之间一场大雨让我们又回到原地。
+                                                </div>
+                                                <div class="comment-info">
+                                                    <span>3小时前</span>
+                                                    <span><a>回复</a></span>
+                                                    <span><a>删除</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 子留言结束 -->
+                                </div>
+                                <!-- 主评论右边部分结束 -->
+                            </div>
+                            <!-- 每一个留言结束（加头像区域） -->
                         </div>
+                        <!-- 每一个Story的留言区域结束-->
                     </div>
-
-
-
+                    <!-- 每一个Story结束 -->
                 </div>
+                <!-- 我的故事对应面板结束 -->
+
                 <% if @is_master_user %>
                 <div class="content-item" name="meet">
                     Meet

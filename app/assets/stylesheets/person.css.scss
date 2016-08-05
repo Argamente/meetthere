@@ -226,5 +226,101 @@ body{
     margin-top:1px;
     margin-left:5px;
   }
+}
 
+// 以一是评论部分
+.story-item-comments{
+
+
+  hr{
+    margin-top:10px;
+    margin-bottom:10px;
+    border-top:1px solid #e0e0e0;
+  }
+
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:column;
+}
+
+.comment-item{
+  display:-webkit-flex;
+  display:flex;
+
+  margin-left:13px;
+}
+
+.comment-item-left{
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:35px;
+  img{
+    width:35px;
+    height:35px;
+  }
+}
+
+
+
+.comment-item-right{
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  margin-left:15px;
+}
+
+.comment-content{
+  strong{
+    color:#265899;
+  }
+}
+
+.comment-info{
+  span{
+    font-size:12px;
+    margin-right:10px;
+    color:#9d9d9d;
+  }
+  span:nth-child(2),
+  span:nth-child(3){
+    cursor:pointer;
+  }
+
+  a{
+    color:#9d9d9d;
+  }
+  a:hover{
+    text-decoration:none;
+  }
+}
+
+
+.comment-sub-item{
+  display:-webkit-flex;
+  display:flex;
+  margin-top:10px;
+  //margin-left:63px;
+}
+
+.comment-sub-item-left{
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:30px;
+  img{
+    width:30px;
+    height:30px;
+  }
+}
+
+.comment-sub-item-right{
+  display:-webkit-flex;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  margin-left:15px;
 }
