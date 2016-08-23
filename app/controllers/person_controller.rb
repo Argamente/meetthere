@@ -12,6 +12,9 @@ class PersonController < ApplicationController
 
     @is_master_user = is_master_user(person_id)
 
+    @stories = userAccount.person.stories
+    
+
   end
 end
 

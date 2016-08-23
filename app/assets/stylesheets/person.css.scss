@@ -2,16 +2,36 @@ body{
   background:#F5F8FA;
 }
 
+.person-container{
+    flex:1;
+  display:-webkit-flex;
+  display:flex;
+  justify-content:center;
+    flex-direction:column;
+    align-items:center;
+}
+
+
 .user-info-holder{
   display:-webkit-flex;
   display:flex;
   flex-direction:column;
+  //align-items:center;
   //height:100vh;
+  //margin-left:-40px;// 这里往左偏25个像素，从视觉上居中，头像左边有空
+  //width:1000px;
+
+  width:1060px;
+//  max-width:1060px;
+ // min-width:1060px;
+
 }
 
 .top-jumbotron{
   height:170px;
   background:#007BB4;
+  width:100%;
+  
   //index-z:0;
 }
 
@@ -23,7 +43,8 @@ body{
   display:-webkit-flex;
   display:flex;
 
-  min-width:800px;
+  min-width:850px;
+
 }
 
 .content-tab-part{
@@ -34,9 +55,9 @@ body{
 
 .content-tab-part-right{
   justify-content:flex-end;
-  border:1px solid red;
+  //border:1px solid red;
   flex:1;
-  padding-right:50px;
+ // padding-right:50px;
   align-items:center;
   button{
     height:35px;
@@ -56,7 +77,7 @@ body{
 
 .tab-item-title{
   color:#666666;
-  font-size:16px;
+  font-size:14px;
 }
 
 .tab-item-count{
@@ -78,12 +99,12 @@ body{
 }
 
 .content-left{
-  width:305px;
+  width:270px;
   display:-webkit-flex;
   display:flex;
   flex-direction:column;
-  padding-left:45px;
-  padding-right:20px;
+ // padding-left:25px;
+  //padding-right:20px;
 }
 
 .content-right{
@@ -91,7 +112,7 @@ body{
 }
 
 .content-item{
-  border:2px solid red;
+ // border:2px solid red;
   display:-webkit-flex;
   display:flex;
   flex-direction:column;
@@ -113,7 +134,7 @@ body{
 .name-gender{
   margin-top:15px;
   span:nth-child(1){
-    font-size:28px;
+    font-size:24px;
   }
 
   img{
@@ -126,24 +147,24 @@ body{
 
 .birthday{
   margin-top:20px;
-  font-size:15px;
+  font-size:14px;
 }
 
 .location{
   margin-top:10px;
   span{
-    font-size:15px;
+    font-size:14px;
   }
 }
 
 .follow-my-heart{
   margin-top:10px;
-  font-size:15px;
+  font-size:14px;
 }
 
 .join-time{
   margin-top:10px;
-  font-size:15px;
+  font-size:14px;
 }
 
 
@@ -153,9 +174,12 @@ body{
   display:flex;
   flex-direction:column;
   padding:10px;
-  padding-bottom:0px;
+  padding-bottom:10px;
   border:2px solid #c4c4c4;
   border-radius:5px;
+  margin-top:10px;
+  
+  //margin-right:50px;
 }
 
 // 每个故事内容部分
@@ -186,7 +210,7 @@ body{
 
 
 .story-content{
-  font-size:20px;
+  font-size:18px;
 }
 
 .story-wantsay{
@@ -241,6 +265,8 @@ body{
   display:-webkit-flex;
   display:flex;
   flex-direction:column;
+
+  display:none;
 }
 
 .comment-item{

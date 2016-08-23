@@ -1,7 +1,7 @@
 <div class="index-item-container">
     <% @stories.each do |story| %>
 
-            <div class="story-item" name="<%= story.story_id %>">
+            <div class="homepage-story-item" name="<%= story.story_id %>">
                 <div class="story-left-part">
                     <img src="/images/headicon/head.png"/>
                     <% if story.person.gender == 1 %>

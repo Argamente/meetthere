@@ -61,7 +61,9 @@ body{
 .mt-item-container{
   //border:1px solid blue;
   flex:1;
+ // min-width:$index-max-width;
   max-width:$index-max-width;
+
   //height:100px;
 }
 
