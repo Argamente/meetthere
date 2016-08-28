@@ -127,11 +127,13 @@
                                     <div class="comment-content">
                                         <strong><%= get_account(memory.account_id).person.nickname %>: </strong><%= memory.content %>
                                     </div>
-                                    <div class="comment-info">
+                                    <div class="comment-info" main_memory_id="<%= memory.memory_id %>">
                                         <span><%= get_memory_time(memory.created_at.localtime) %></span>
-                                        <span><a>回复</a></span>
+                                        <span class="btn-reply"><a>回复</a></span>
                                         <span><a>删除</a></span>
                                     </div>
+
+				    <!-- 在这里插入主留言的回复框 -->
 
                                     <!-- 子留言开始 -->
                                     <div class="comment-sub-item-holder">
@@ -142,15 +144,19 @@
 
                                             <div class="comment-sub-item-right">
                                                 <div class="comment-content">
-                                                    <strong>Fred: </strong>第一眼看看到你的照片，就有一种熟悉的感觉
+                                                    <strong>Fred: </strong>这是一条测试子留言，测试子留言
                                                 </div>
-                                                <div class="comment-info">
+                                                <div class="comment-info" main_memory_id="<%= memory.memory_id %>">
                                                     <span>3小时前</span>
-                                                    <span><a>回复</a></span>
+                                                    <span class="btn-reply"><a>回复</a></span>
                                                     <span><a>删除</a></span>
                                                 </div>
+
+						<!-- 在这里插入子留言的回复框 -->
+						
                                             </div>
                                         </div>
+					
                                     </div>
                                     <!-- 子留言结束 -->
                                 </div>
@@ -180,7 +186,20 @@
 </section>
 
 
+<!-- 回复框模板 -->
+<template id="memory-reply-box">
+  <div class="person-post-memory-holder">
+    <div><textarea placeholder="这里需要点内容"></textarea></div>
+    <div>
+      <button class="btn btn-info btn-xs person-btn-message-confirm">确定</button>
+      <button class="btn btn-default btn-xs person-btn-message-cancel">取消</button>
+    </div>
+  </div>
+</template>
+
+
 <script>
+  
     $(function(){
         $(".tab-bar-item[name=story]").children(".tab-item-line").show();
         $(".content-item[name=story]").show();
@@ -204,5 +223,49 @@
         });
 
         <% end %>
+
+
+	
+	var current_memory_node = null;
+	var current_main_memory_id = -1;
+
+	// 点了任何一条留言或子留言中的”回复“按钮
+	$(".btn-reply").click(function(){
+	// 先移除所有的回复框
+	remove_all_reply_box();
+	var t = document.querySelector("#memory-reply-box");
+	var box = document.importNode(t.content,true);
+
+	var insertNode = $(this).parent();
+
+	insertNode.append(box);
+
+	bind_memory_reply_box_btn_event();
+
+	current_main_memory_id = $(this).parent().attr("main_memory_id");
+	
+	});
+
+
+	
+	// 重新绑定新插入的回复框中确定和取消按钮的事件
+	function bind_memory_reply_box_btn_event(){
+	$(".person-btn-message-confirm").click(function(){
+	alert("Click confirm");
+	});
+
+	$(".person-btn-message-cancel").click(function(){
+	remove_all_reply_box();
+	});
+
+	}
+
+
+	// 移除回复框
+	function remove_all_reply_box(){
+	    $(".person-post-memory-holder").remove();
+	}
+	
     });
 </script>
+

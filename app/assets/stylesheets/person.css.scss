@@ -328,8 +328,7 @@ body{
   display:-webkit-flex;
   display:flex;
   margin-top:10px;
-  //margin-left:63px;
-  display:none;
+  //display:none;
 }
 
 .comment-sub-item-left{
@@ -350,4 +349,18 @@ body{
   flex-direction:column;
   flex:1;
   margin-left:15px;
+}
+
+
+.person-post-memory-holder{
+  margin-top:10px;
+  margin-bottom:10px;
+  //border:1px solid red;
+  textarea{
+    width:400px;
+    height:80px;
+    resize:none;
+  }
+
+  //display:none;
 }
