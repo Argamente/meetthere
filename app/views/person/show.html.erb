@@ -6,28 +6,28 @@
 <%= render 'homepage/header' %>
 
 <section class="person-container">
-  <div class="top-jumbotron"></div>
+    <div class="top-jumbotron"></div>
     <div class="mt-item-container user-info-holder">
         <div class="center-tab-bar">
             <div class="content-tab-part">
                 <% if @is_master_user %>
-                <div class="tab-bar-item" name="story">
-                    <span class="tab-item-title"><strong>我的故事</strong></span>
-                    <span class="tab-item-count"><strong>20</strong></span>
-                    <span class="tab-item-line"></span>
-                </div>
+                    <div class="tab-bar-item" name="story">
+			<span class="tab-item-title"><strong>我的故事</strong></span>
+			<span class="tab-item-count"><strong>20</strong></span>
+			<span class="tab-item-line"></span>
+                    </div>
 
-                <div class="tab-bar-item" name="meet">
-                    <span class="tab-item-title"><strong>我的遇见</strong></span>
-                    <span class="tab-item-count"><strong>14</strong></span>
-                    <span class="tab-item-line"></span>
-                </div>
+                    <div class="tab-bar-item" name="meet">
+			<span class="tab-item-title"><strong>我的遇见</strong></span>
+			<span class="tab-item-count"><strong>14</strong></span>
+			<span class="tab-item-line"></span>
+                    </div>
 
-                <div class="tab-bar-item" name="like">
-                    <span class="tab-item-title"><strong>我喜欢的</strong></span>
-                    <span class="tab-item-count"><strong>25</strong></span>
-                    <span class="tab-item-line"></span>
-                </div>
+                    <div class="tab-bar-item" name="like">
+			<span class="tab-item-title"><strong>我喜欢的</strong></span>
+			<span class="tab-item-count"><strong>25</strong></span>
+			<span class="tab-item-line"></span>
+                    </div>
                 <% else %>
                     <div class="tab-bar-item" name="story">
                         <span class="tab-item-title"><strong>Ta的故事</strong></span>
@@ -37,9 +37,9 @@
                 <% end %>
             </div>
             <% if @is_master_user %>
-            <div class="content-tab-part content-tab-part-right">
-                <button class="btn btn-default" id="btn-edit-user-info">编辑个人资料</button>
-            </div>
+		<div class="content-tab-part content-tab-part-right">
+                    <button class="btn btn-default" id="btn-edit-user-info">编辑个人资料</button>
+		</div>
             <% end %>
         </div>
 
@@ -70,115 +70,121 @@
             <div class="content-right">
                 <!-- 我的故事 Tab对应面板 -->
                 <div class="content-item" name="story">
-		  <% @stories.each do |story| %>
-                    <!-- 每一个Story开始 -->
-                    <div class="story-item">
-                        <div class="story-item-content">
-                            <div class="story-content-left">
-                                <img src="/images/headicon/ted.jpg"/>
+		    <% @stories.each do |story| %>
+			<!-- 每一个Story开始 -->
+			<div class="story-item">
+                            <div class="story-item-content">
+				<div class="story-content-left">
+                                    <img src="/images/headicon/ted.jpg"/>
+				</div>
+				<div class="story-content-right">
+				    <div class="story-content">
+					<%= story.content %>
+                                    </div>
+                                    <div class="story-wantsay">
+					<%= story.wantsay %>
+                                    </div>
+                                    <div class="story-plan-info">
+					<b>
+					    <%= story.date_str %>
+					    <%= story.time_str %>
+					    <%= story.addr_province %>
+					    <%= story.addr_city %>
+					    <%= story.area %>
+					    <%= story.addr_detail %>
+					    <%= story.group_str %>
+					</b>
+                                    </div>
+                                    <div class="story-link-info">
+					<div class="story-message">
+                                            <span class="glyphicon glyphicon-envelope"></span>
+                                            <span>18</span>
+					</div>
+
+					<!-- 把 like 功能先去提吧
+					     <div class="story-like">
+                                             <a><span class="glyphicon glyphicon-heart"></span></a>
+                                             <span><b>5</b></span>
+					     </div>
+					   -->
+                                    </div>
+				</div>
                             </div>
-                            <div class="story-content-right">
-                              <div class="story-content">
-				<%= story.content %>
-                                </div>
-                                <div class="story-wantsay">
-                                    <%= story.wantsay %>
-                                </div>
-                                <div class="story-plan-info">
-                                  <b>
-				    <%= story.date_str %>
-				    <%= story.time_str %>
-				    <%= story.addr_province %>
-				    <%= story.addr_city %>
-				    <%= story.area %>
-				    <%= story.addr_detail %>
-				    <%= story.group_str %>
-				  </b>
-                                </div>
-                                <div class="story-link-info">
-                                    <div class="story-message">
-                                        <span class="glyphicon glyphicon-envelope"></span>
-                                        <span>18</span>
-                                    </div>
+                            <!-- 每一个Story的留言区域 -->
+                            <div class="story-item-comments">
+				<% if story.memories.count > 0 %>
+				    <HR align=right width=730 color=#987cb9 SIZE=1>
+				<% end %>
 
-                                    <!-- 把 like 功能先去提吧
-                                    <div class="story-like">
-                                        <a><span class="glyphicon glyphicon-heart"></span></a>
-                                        <span><b>5</b></span>
-                                    </div>
-                                    -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 每一个Story的留言区域 -->
-                        <div class="story-item-comments">
-                            <HR align=right width=730 color=#987cb9 SIZE=1>
+				<% story.memories.each do |memory| %>
+				    <!-- 每一个留言开始 -->
+				    <div class="comment-item">
+					<div class="comment-item-left">
+					    <img src="/images/headicon/ted.jpg"/>
+					    <!--<img src="<%= get_account(memory.account_id).person.head_url %>"/>-->
+					</div>
 
-			    <% story.memories.each do |memory| %>
-                            <!-- 每一个留言开始 -->
-                            <div class="comment-item">
-                                <div class="comment-item-left">
-                                  <img src="/images/headicon/ted.jpg"/>
-				  <!--<img src="<%= get_account(memory.account_id).person.head_url %>"/>-->
-                                </div>
+					<!-- 主评论右边部分开始 -->
+					<div class="comment-item-right">
+					    <div class="comment-content">
+						<strong><%= get_account(memory.account_id).person.nickname %>: </strong><%= memory.content %>
+					    </div>
+					    <div class="comment-info"
+						 main_memory_id="<%= memory.memory_id %>"
+						 belong_story_id="<%= story.story_id %>">
+						<span><%= get_memory_time(memory.created_at.localtime) %></span>
+						<span class="btn-reply"><a>回复</a></span>
+						<span><a>删除</a></span>
+					    </div>
 
-                                <!-- 主评论右边部分开始 -->
-                                <div class="comment-item-right">
-                                    <div class="comment-content">
-                                        <strong><%= get_account(memory.account_id).person.nickname %>: </strong><%= memory.content %>
-                                    </div>
-                                    <div class="comment-info" main_memory_id="<%= memory.memory_id %>">
-                                        <span><%= get_memory_time(memory.created_at.localtime) %></span>
-                                        <span class="btn-reply"><a>回复</a></span>
-                                        <span><a>删除</a></span>
-                                    </div>
+					    <!-- 在这里插入主留言的回复框 -->
 
-				    <!-- 在这里插入主留言的回复框 -->
+					    <!-- 子留言开始 -->
+					    <div class="comment-sub-item-holder">
+						<div class="comment-sub-item">
+						    <div class="comment-sub-item-left">
+							<img src="/images/headicon/ted.jpg"/>
+						    </div>
 
-                                    <!-- 子留言开始 -->
-                                    <div class="comment-sub-item-holder">
-                                        <div class="comment-sub-item">
-                                            <div class="comment-sub-item-left">
-                                                <img src="/images/headicon/ted.jpg"/>
-                                            </div>
+						    <div class="comment-sub-item-right">
+							<div class="comment-content">
+							    <strong>Fred: </strong>这是一条测试子留言，测试子留言
+							</div>
+							<div class="comment-info"
+							     main_memory_id="<%= memory.memory_id %>"
+							     belong_story_id="<%= story.story_id %>">
+							    <span>3小时前</span>
+							    <span class="btn-reply"><a>回复</a></span>
+							    <span><a>删除</a></span>
+							</div>
 
-                                            <div class="comment-sub-item-right">
-                                                <div class="comment-content">
-                                                    <strong>Fred: </strong>这是一条测试子留言，测试子留言
-                                                </div>
-                                                <div class="comment-info" main_memory_id="<%= memory.memory_id %>">
-                                                    <span>3小时前</span>
-                                                    <span class="btn-reply"><a>回复</a></span>
-                                                    <span><a>删除</a></span>
-                                                </div>
-
-						<!-- 在这里插入子留言的回复框 -->
+							<!-- 在这里插入子留言的回复框 -->
+							
+						    </div>
+						</div>
 						
-                                            </div>
-                                        </div>
-					
-                                    </div>
-                                    <!-- 子留言结束 -->
-                                </div>
-                                <!-- 主评论右边部分结束 -->
+					    </div>
+					    <!-- 子留言结束 -->
+					</div>
+					<!-- 主评论右边部分结束 -->
+				    </div>
+				    <!-- 每一个留言结束（加头像区域） -->
+				<% end %>
                             </div>
-                            <!-- 每一个留言结束（加头像区域） -->
-			    <% end %>
-                        </div>
-                        <!-- 每一个Story的留言区域结束-->
-                    </div>
-                    <!-- 每一个Story结束 -->
+                            <!-- 每一个Story的留言区域结束-->
+			</div>
+			<!-- 每一个Story结束 -->
 		    <% end %>
                 </div>
                 <!-- 我的故事对应面板结束 -->
 
                 <% if @is_master_user %>
-                <div class="content-item" name="meet">
-                    Meet
-                </div>
-                <div class="content-item" name="like">
-                    Like
-                </div>
+                    <div class="content-item" name="meet">
+			Meet
+                    </div>
+                    <div class="content-item" name="like">
+			Like
+                    </div>
                 <% end %>
             </div>
         </div>
@@ -188,84 +194,108 @@
 
 <!-- 回复框模板 -->
 <template id="memory-reply-box">
-  <div class="person-post-memory-holder">
-    <div><textarea placeholder="这里需要点内容"></textarea></div>
-    <div>
-      <button class="btn btn-info btn-xs person-btn-message-confirm">确定</button>
-      <button class="btn btn-default btn-xs person-btn-message-cancel">取消</button>
+    <div class="person-post-memory-holder">
+	<div><textarea placeholder="这里需要点内容" id="memory-box"></textarea></div>
+	<div>
+	    <button class="btn btn-info btn-xs person-btn-message-confirm">确定</button>
+	    <button class="btn btn-default btn-xs person-btn-message-cancel">取消</button>
+	</div>
     </div>
-  </div>
 </template>
 
 
 <script>
-  
-    $(function(){
-        $(".tab-bar-item[name=story]").children(".tab-item-line").show();
-        $(".content-item[name=story]").show();
+ 
+ $(function(){
+     $(".tab-bar-item[name=story]").children(".tab-item-line").show();
+     $(".content-item[name=story]").show();
 
-        <% if @is_master_user %>
-        $(".tab-bar-item").click(function(){
-            var name = $(this).attr("name");
-            var curr_tab_item_class = ".tab-bar-item[name=" + name + "]";
-            var curr_content_item_class = ".content-item[name=" + name + "]";
+     <% if @is_master_user %>
+     $(".tab-bar-item").click(function(){
+         var name = $(this).attr("name");
+         var curr_tab_item_class = ".tab-bar-item[name=" + name + "]";
+         var curr_content_item_class = ".content-item[name=" + name + "]";
 
-            if($(curr_tab_item_class).children(".tab-item-line").css("display")=='none'){
-                $(".tab-item-line").hide();
-                $(".content-item").hide();
-                $(curr_tab_item_class).children(".tab-item-line").show();
-                $(curr_content_item_class).show();
-            }
-        });
+         if($(curr_tab_item_class).children(".tab-item-line").css("display")=='none'){
+             $(".tab-item-line").hide();
+             $(".content-item").hide();
+             $(curr_tab_item_class).children(".tab-item-line").show();
+             $(curr_content_item_class).show();
+         }
+     });
 
-        $("#btn-edit-user-info").click(function(){
+     $("#btn-edit-user-info").click(function(){
 
-        });
+     });
 
-        <% end %>
-
-
-	
-	var current_memory_node = null;
-	var current_main_memory_id = -1;
-
-	// 点了任何一条留言或子留言中的”回复“按钮
-	$(".btn-reply").click(function(){
-	// 先移除所有的回复框
-	remove_all_reply_box();
-	var t = document.querySelector("#memory-reply-box");
-	var box = document.importNode(t.content,true);
-
-	var insertNode = $(this).parent();
-
-	insertNode.append(box);
-
-	bind_memory_reply_box_btn_event();
-
-	current_main_memory_id = $(this).parent().attr("main_memory_id");
-	
-	});
+     <% end %>
 
 
-	
-	// 重新绑定新插入的回复框中确定和取消按钮的事件
-	function bind_memory_reply_box_btn_event(){
-	$(".person-btn-message-confirm").click(function(){
-	alert("Click confirm");
-	});
+     
+     var current_memory_node = null;
+     var current_main_memory_id = -1;
+     var current_belong_story_id = -1;
 
-	$(".person-btn-message-cancel").click(function(){
-	remove_all_reply_box();
-	});
+     // 点了任何一条留言或子留言中的”回复“按钮
+     $(".btn-reply").click(function(){
+	 // 先移除所有的回复框
+	 remove_all_reply_box();
+	 var t = document.querySelector("#memory-reply-box");
+	 var box = document.importNode(t.content,true);
 
-	}
+	 var insertNode = $(this).parent();
+
+	 insertNode.append(box);
+
+	 bind_memory_reply_box_btn_event();
+
+	 // 保存当前留言的主留言id
+	 current_main_memory_id = $(this).parent().attr("main_memory_id");
+	 current_belong_story_id = $(this).parent().attr("belong_story_id");
+	 
+     });
 
 
-	// 移除回复框
-	function remove_all_reply_box(){
-	    $(".person-post-memory-holder").remove();
-	}
-	
-    });
+     
+     // 重新绑定新插入的回复框中确定和取消按钮的事件
+     function bind_memory_reply_box_btn_event(){
+	 $(".person-btn-message-confirm").click(function(){
+	     var content = $("#memory-box").val();
+	     var story_id =  current_belong_story_id;
+	     var main_memory_id = current_main_memory_id;
+	     alert(story_id + "   " + main_memory_id);
+	     $.ajax({
+		 type:"POST",
+		 url:"/postmemoryatperson",
+		 data:{
+		     _story_id:story_id,
+		     _main_memory_id:main_memory_id,
+		     _content:content,
+		 },
+		 success:function(data,textStatus,xhr){
+		     if(data.result == 0){
+			 alert("留言成功");
+		     }
+		     else{
+			 alert("留言失败:" + data.message);
+		     }
+		 }
+	     });
+	     
+	 });
+
+	 $(".person-btn-message-cancel").click(function(){
+	     remove_all_reply_box();
+	 });
+
+     }
+
+
+     // 移除回复框
+     function remove_all_reply_box(){
+	 $(".person-post-memory-holder").remove();
+     }
+     
+ });
 </script>
 
