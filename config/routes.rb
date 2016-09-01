@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   match '/user/:id', to:'person#show', via:'get'
 
   match '/postmemoryatperson',to:'person#topost_memory_at_person', via:'post'
-
+  match '/deletememory', to:'person#to_delete_memory', via:'post'
+  
 end

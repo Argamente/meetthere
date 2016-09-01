@@ -29,7 +29,7 @@ module PersonHelper
         return hours.to_s + "小时" + minutes.to_s + "分钟前"
       end
     else
-      return created_time
+      return created_time.strftime "%Y-%m-%d %H:%M:%S"
     end
   end
 end

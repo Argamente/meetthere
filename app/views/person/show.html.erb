@@ -115,9 +115,11 @@
 				<% if story.memories.count > 0 %>
 				    <HR align=right width=730 color=#987cb9 SIZE=1>
 				<% end %>
-
-				<% story.memories.each do |memory| %>
-				    <!-- 每一个留言开始 -->
+				
+				
+				<!-- 每一个留言开始 -->
+				<% if !@main_memories[story.story_id].nil? %>
+				<% @main_memories[story.story_id].each do |memory| %>
 				    <div class="comment-item">
 					<div class="comment-item-left">
 					    <img src="/images/headicon/ted.jpg"/>
@@ -127,49 +129,57 @@
 					<!-- 主评论右边部分开始 -->
 					<div class="comment-item-right">
 					    <div class="comment-content">
-						<strong><%= get_account(memory.account_id).person.nickname %>: </strong><%= memory.content %>
+						<strong><%= get_account(memory.account_id).person.nickname %>:
+						</strong><%= memory.content %>
 					    </div>
 					    <div class="comment-info"
+						 memory_id="<%= memory.memory_id %>"
 						 main_memory_id="<%= memory.memory_id %>"
 						 belong_story_id="<%= story.story_id %>">
 						<span><%= get_memory_time(memory.created_at.localtime) %></span>
 						<span class="btn-reply"><a>回复</a></span>
-						<span><a>删除</a></span>
+						<span class="btn-delete"><a>删除</a></span>
 					    </div>
 
 					    <!-- 在这里插入主留言的回复框 -->
-
+					    
 					    <!-- 子留言开始 -->
-					    <div class="comment-sub-item-holder">
-						<div class="comment-sub-item">
-						    <div class="comment-sub-item-left">
-							<img src="/images/headicon/ted.jpg"/>
-						    </div>
+					    <% if !@sub_memories[memory.memory_id].nil? %>
+						<% @sub_memories[memory.memory_id].each do |sub_memory| %>
+						    <div class="comment-sub-item-holder">
+							<div class="comment-sub-item">
+							    <div class="comment-sub-item-left">
+								<img src="/images/headicon/ted.jpg"/>
+							    </div>
 
-						    <div class="comment-sub-item-right">
-							<div class="comment-content">
-							    <strong>Fred: </strong>这是一条测试子留言，测试子留言
-							</div>
-							<div class="comment-info"
-							     main_memory_id="<%= memory.memory_id %>"
-							     belong_story_id="<%= story.story_id %>">
-							    <span>3小时前</span>
-							    <span class="btn-reply"><a>回复</a></span>
-							    <span><a>删除</a></span>
-							</div>
+							    <div class="comment-sub-item-right">
+								<div class="comment-content">
+								    <strong><%= get_account(sub_memory.account_id).person.nickname %>:
+								    </strong><%= sub_memory.content %>
+								</div>
+								<div class="comment-info"
+								     memory_id ="<%= sub_memory.memory_id %>"
+								     main_memory_id="<%= memory.memory_id %>"
+								     belong_story_id="<%= story.story_id %>">
+								    <span><%= get_memory_time(sub_memory.created_at.localtime) %></span>
+								    <span class="btn-reply"><a>回复</a></span>
+								    <span class="btn-delete"><a>删除</a></span>
+								</div>
 
-							<!-- 在这里插入子留言的回复框 -->
-							
+								<!-- 在这里插入子留言的回复框 -->
+								
+							    </div>
+							</div>
 						    </div>
-						</div>
-						
-					    </div>
+						<% end %>
+					    <% end %>
 					    <!-- 子留言结束 -->
 					</div>
 					<!-- 主评论右边部分结束 -->
 				    </div>
-				    <!-- 每一个留言结束（加头像区域） -->
 				<% end %>
+				<% end %>
+				<!-- 每一个留言结束（加头像区域） -->
                             </div>
                             <!-- 每一个Story的留言区域结束-->
 			</div>
@@ -255,6 +265,27 @@
 	 
      });
 
+     $(".btn-delete").click(function(){
+	 var memory_id = $(this).parent().attr("memory_id");
+	 $.ajax({
+	     type:"POST",
+	     url:"/deletememory",
+	     data:{
+		 _memory_id:memory_id,
+	     },
+	     success:function(data,textStatus,xhr){
+		 if(data.result == 0){
+		     location.reload(false);
+//		     alert("删除成功");
+		 }else{
+		     alert("删除失败");
+		 }
+	     }
+	 });
+	 
+     });
+     
+
 
      
      // 重新绑定新插入的回复框中确定和取消按钮的事件
@@ -263,7 +294,7 @@
 	     var content = $("#memory-box").val();
 	     var story_id =  current_belong_story_id;
 	     var main_memory_id = current_main_memory_id;
-	     alert(story_id + "   " + main_memory_id);
+	     
 	     $.ajax({
 		 type:"POST",
 		 url:"/postmemoryatperson",
@@ -274,15 +305,19 @@
 		 },
 		 success:function(data,textStatus,xhr){
 		     if(data.result == 0){
+			 location.reload(false);
 			 alert("留言成功");
+			
 		     }
 		     else{
 			 alert("留言失败:" + data.message);
 		     }
 		 }
 	     });
-	     
+	     remove_all_reply_box();
+	    
 	 });
+	 
 
 	 $(".person-btn-message-cancel").click(function(){
 	     remove_all_reply_box();
